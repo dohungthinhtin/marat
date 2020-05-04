@@ -1,0 +1,50 @@
+---
+layout: post
+title:  "Ethereum Series(DAPP)"
+date:   2017-11-02 13:12:25 +0700
+categories: BlockChain
+keywords: DAPP
+author: Thinh-Do Hung
+---
+
+Hầu hết các ứng dụng trên Internet hiện nay là Centralized. Có nghĩa rằng, các ứng dụng chạy ở dưới người dùng sẽ là client kết nối với một trung tâm server, nơi chịu trách nhiệm, cam kết về service đối với người dùng. Nếu bạn để ý sẽ thấy rằng các websites, hay games đều thuộc sở hữu của một công  ty hoặc một cá nhân cụ thể. Các nhà phát triển phần mềm đã xây dựng các ứng dụng Centralized trong một khoảng thời gian dài. Tuy nhiên, có một vài đặc điểm của ứng dụng mà các hệ thống Centralized không thể đáp ứng được, hoặc nếu có đáp ứng được thì vẫn dẫn đến một vài vấn đề nghiêm trọng. Các vấn đề đó bao gồm: tính minh bạch, tính chịu lỗi, không ngăn chặn được quá trình kiểm duyệt của đơn vị chức năng… Để giải quyết những vấn đề này, một công nghệ mới dành cho việc xây dựng ứng dụng Internet được gọi là decentralized applications (Dapps) ra đời.
+Trong bài viết này, chúng ta sẽ tìm hiểu về Decentralized Apps.
+
+Các topics trong bài viết này bao gồm:
+* DApps là gì?
+* Sự khác nhau giữa decentralized, centralized, và distributed applications?
+* Ưu, nhược điểm của centralized và decentralized applications.
+* Giới thiệu về một số DApps nổi tiếng hiện nay.
+
+**1. Dapp là gì?**
+
+Một Dapp về cơ bản là một ứng dụng Internet nơi mà backend được chạy trên một mạng lưới peer-to-peer và source code của nó phải là open source. Với cơ chế như vậy, không có một node nào trên mạng lưới có khả năng điều khiển hoàn toàn Dapp.
+
+Phụ thuộc vào các chức năng của Dapp mà nó sẽ có các kiểu data structures khác nhau nhằm mục đích lưu trữ dữ liệu. Ví dụ, bitcoin DApp sử dụng blockchain data structure.
+
+Peer ở đây có thể là bất kỳ máy tính nào có kết nối đến Internet, điều này gây khó khăn lớn để có thể phát hiện hay ngăn chặn một peer nào đó cố gắng để tạo ra sự sai lệch thông tin và broadcast cho tất cả các peers còn lại. Với thách thức trên, đã có một vài các protocol(consensus protocol) với ý nghĩa sẽ xem xét tính đúng đắn của dữ liệu được publish ra từ một node là đúng hay sai. Đây là vấn đề riêng của hệ thống Decentralized vì các hệ thống như Centralized được quản lí bởi một server có khả năng phán xét tính đúng đắn của thông tin được publish từ một client.
+Consensus protocol được thiết kế dành riêng cho một loại data structure mà DApp sử dụng. Ví dụ, bitcoin sử dụng proof-of-work protocol để có thể đảm bảo tính thống nhất trong Dapp.
+
+Mọi DApp đều cần một client để user sử dụng. Trước tiên trong quá trình sử dụng, chúng ta cần một node ở trên mạng và node này sẽ trở thành node server kết nối với client. Những node của DApp bây giờ sẽ cung cấp các API và thúc đẩy các nhà developers phát triển đa dạng các client sử dụng API này.  Một vài developer sẽ công khai cung cấp client, các client này nên là open source và nên được download để sử dụng, nếu ngược lại, toàn bộ ý tưởng của decentralization sẽ bị sai lệch.
+<center>
+    <img src="/blog/assets/img/centralized_decentralized_distributed.jpeg">
+</center>
+<center>
+So sánh trực quan các hệ thống hiện tại.
+
+</center>
+
+
+**2. Ưu điểm của ứng dụng decentralized**
+
+* DApp rất mạnh về khả năng chịu lỗi, vì không hề có một điểm chịu lỗi duy nhất nào. Bất cứ node nào trên mạng lưới bị lỗi sẽ ko gây ảnh hưởng đến toàn bộ hệ thống.
+* DApp ngăn chặn sự kiểm duyệt bất hợp lệ(censorship) vì không có một trung tâm nào đứng ra chịu trách nhiệm Dapp.  Vì thế chính phủ sẽ không có khả năng gây áp lực để kiểm duyệt thông tin. Chính phủ cũng không thể ngăn chặn domain hay IP của ứng dụng vì DApp hoàn toàn không truy cập thông qua một domain hay một IP nào cụ thể. Tất nhiên là bạn có thể nghĩ rằng chính phủ có khả năng theo vết(track) của một node nào đó và chặn IP của chính node này, tuy nhiên, với một mạng peer-to-peer đủ lớn, thực sự rất khó khăn để có thể tắt ứng dụng Dapp, đặc biết là khi mạng lưới này trải rộng trên nhiều quốc gia.
+* Đáng tin cậy. User sẽ hoàn toàn tin cậy vào Dapp vì nó không bị điều khiển bởi một trung tâm hay đơn vị nào cả.
+
+**3. Nhược điểm của ứng dụng decentralized**
+
+Dĩ nhiên là mọi hệ thống đều có ưu điểm và nhược điểm, dưới đây là một số nhược điểm:
+* Việc fix bug hay update DApp là điều khó khăn, vì mọi node trên mạng đều phải được update.
+* Vì một số DApp yêu cầu xác nhận danh tính(authorize) và vì DApp không hề có một trung tâm chịu trách nhiệm quản lí để xác mình danh tính người dùng, điều này trở thành vấn đề lớn trong quá trình phát triển Dapp.
+* DApp rất khó xây dựng, vì nó sử dụng nhiều protocol phức tạp để đạt được tính thống nhất(consensus) như đã nói qua ở trên. Không giống như các ứng dụng centralized bắt đầu với ý tưởng(idea), rồi thêm các features rồi sau đó thì scale ứng dụng, DApp phải scale hệ thống ngay khi họ vừa bắt đầu.
+* Một ứng dụng thường sẽ có những phụ thuộc nhất định vào thirt-party API để lấy hoặc lưu trữ thông tin. Tuy nhiên, DApp không nên phụ thuộc vào centralized application APIs, nó nên phụ thuộc vào các DApp khác. Mặc dù vậy, các DApp trên thế giới hiện nay chưa thực sự phổ biến, cộng với việc DApp trong thực tế vẫn khá khó khăn để tương tác với các Dapp khác.

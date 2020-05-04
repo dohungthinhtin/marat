@@ -1,0 +1,20 @@
+---
+layout: post
+title:  "Ethereum Series(Introduction)"
+date:   2017-11-02 13:11:25 +0700
+categories: BlockChain
+keywords: DAPP
+author: Thinh-Do Hung
+---
+Xin chào các bạn, đây là bài blog đầu tiên của mình trong series Ethereum, các kiến thức mà mình nêu ra trong series này sẽ tập trung vào cuốn sách Building BlockChain Projects của tác giả Narayan Prusty. Cuốn sách này đang được bán trên Amazon với giá $7.99.
+
+<center>
+    <img width='200px' height='200px' src="/blog/assets/img/building_blockchain_project.png">
+</center>
+
+<center>Building BlockChain Projects</center>
+
+Giới thiệu sơ qua về cuốn Building BlockChain Projects:
+Cuốn sách trình bày về các khái niệm cơ bản của Ethereum(include BlockChain) theo lối dẫn dắt dễ hiểu và tự nhiên, nội dung bao gồm các khái niệm về DAPP, How Ethereum Works, Writing Smart Contract, Getting Started With Web3js, Building Wallet Service, so on…
+
+Thông qua các kiến thức của cuốn sách này và mức độ tìm hiểu của bản thân, mong rằng mình có thể giúp các bạn có thể tiếp cận với Ethereum 1 cách dễ dàng hơn, thích thú hơn.

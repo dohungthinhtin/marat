@@ -52,6 +52,10 @@ p::selection{
   font-size: 3.5em;
 }
 
+.post-content {
+  font-size: 1.75rem;
+}
+
 .line{
   max-width: 100%;
   display: block;
