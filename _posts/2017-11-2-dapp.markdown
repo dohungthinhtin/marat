@@ -27,7 +27,7 @@ Consensus protocol được thiết kế dành riêng cho một loại data stru
 
 Mọi DApp đều cần một client để user sử dụng. Trước tiên trong quá trình sử dụng, chúng ta cần một node ở trên mạng và node này sẽ trở thành node server kết nối với client. Những node của DApp bây giờ sẽ cung cấp các API và thúc đẩy các nhà developers phát triển đa dạng các client sử dụng API này.  Một vài developer sẽ công khai cung cấp client, các client này nên là open source và nên được download để sử dụng, nếu ngược lại, toàn bộ ý tưởng của decentralization sẽ bị sai lệch.
 <center>
-    <img src="/blog/assets/img/centralized_decentralized_distributed.jpeg">
+    <img src="/assets/img/centralized_decentralized_distributed.jpeg">
 </center>
 <center>
 So sánh trực quan các hệ thống hiện tại.

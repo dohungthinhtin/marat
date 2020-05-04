@@ -9,7 +9,7 @@ author: Thinh-Do Hung
 Xin chào các bạn, đây là bài blog đầu tiên của mình trong series Ethereum, các kiến thức mà mình nêu ra trong series này sẽ tập trung vào cuốn sách Building BlockChain Projects của tác giả Narayan Prusty. Cuốn sách này đang được bán trên Amazon với giá $7.99.
 
 <center>
-    <img width='200px' height='200px' src="/blog/assets/img/building_blockchain_project.png">
+    <img width='200px' height='200px' src="/assets/img/building_blockchain_project.png">
 </center>
 
 <center>Building BlockChain Projects</center>
