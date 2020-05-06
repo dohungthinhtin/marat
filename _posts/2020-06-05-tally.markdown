@@ -1,0 +1,62 @@
+---
+layout: post
+title:  "Ruby 2.7#tally"
+author: Thinh-Do Hung
+date:   2020-05-05 13:12:25 +0700
+category: Ruby
+keywords: Tally
+---
+
+<h1> Problems? </h1>
+
+If you're ruby on rails developer, you might face resolving something like generating a hash from a list with different key and the values are the number that it appears in the list.There are likely several more variants of this, but those are a few of the more common ones you might see around.
+
+For example:
+
+
+{% highlight ruby %}
+
+list.group_by { |v| v.something }.transform_values(&:size)
+
+list.group_by { |v| v.something }.map { |k, vs| [k, vs.size] }.to_h
+
+list.group_by { |v| v.something }.to_h { |k, vs| [k, vs.size] }
+
+list.each_with_object(Hash.new(0)) { |v, h| h[v.something] += 1 }
+
+{% endhighlight %}
+
+Any chances to make it short and more readable for developer?
+
+Yes, we have it already since Ruby 2.7.
+
+
+<h1> Welcome to Enumerable#tally </h1>
+
+"*tally*" counts things:
+
+```ruby
+[1, 1, 2].tally
+# => { 1 => 2, 2 => 1 }
+
+[1, 1, 2].map(&:even?).tally
+# => { false => 2, true => 1 }
+```
+
+"*tally*" works by counting the occurrences of each element in an Enumrable type. If we apply that to a list of string type, it might be clearer
+
+```ruby
+%w(foo foo bar foo baz foo).tally
+=> {"foo" => 4, "bar" => 1, "baz" => 1}
+```
+
+*tally_by* has not been accepted into core, but you can map the list first:
+
+```ruby
+%w(foo foo bar foo baz foo).map { |s| s[0] }.tally
+=> {“f” => 4, “b” => 2}
+```
+
+<h1> Wrapping Up </h1>
+
+Ruby 2.7 brings us so many interesting things. So keep track of it.
