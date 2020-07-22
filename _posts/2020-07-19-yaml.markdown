@@ -1,0 +1,267 @@
+---
+layout: post
+title:  Yaml for Web Developers
+author: Thinh-Do Hung
+date:   2020-07-19 12:00:00 +0700
+category: Yaml
+keywords: yaml
+---
+
+As a Ruby On Rails developer, I bet you've seen a lot of .yml files in your project like database.yml(database configuration), en.yml(translate configuration), etc. But let's face it, do you really know about .yml file???
+
+All the things I know when I start a new rails project are .yml files serve for configuration but not know why using this extension and the benefit of it.
+# What is YAML?
+Follow wikipedia, we have a definition:
+> "YAML (a recursive acronym for "YAML Ain't Markup Language") is a human-readable data-serialization language" YAML (from version 1.2) is a superset of JSON and is commonly used for configuration files and in applications where data is being stored or transmitted.
+
+It means a lot, right? We use it for configuration and somehow YAML is so much more than JSON, especially about human-readable respective.
+# YAML vs JSON
+Before dive into the different, we need to know the term superset first:
+
+> "Superset is A programming language that contains all the features of a given language and has been expanded or enhanced to include other features as well." - Font
+
+If you are an FE developer, you can see the relationship between YAML and JSON is similar to TypeScript and Javascript in JS world.
+Let's see this example:
+```json
+{
+  "json": [
+    "rigid",
+    "better for data interchange"
+  ],
+  "yaml": [
+    "slim and flexible",
+    "better for configuration"
+  ],
+  "object": {
+    "array": [
+      {
+        "null_value": null
+      },
+      {
+        "boolean": true
+      },
+      {
+        "integer": 1
+      }
+    ]
+  },
+  "paragraph": "Blank lines denote\nparagraph breaks\n",
+  "content": "Or we\ncan auto\nconvert line breaks\nto save space"
+}
+```
+Here is an example JSON file, seems easy to read, but you can see some limitations:
+- Can't create variables.
+- Can't use external variables.
+- Overrides values.
+
+And now, convert it to YAML syntax
+
+```json
+json:
+  - rigid
+  - better for data interchange
+yaml:
+  - slim and flexible
+  - better for configuration
+object:
+  array:
+    - null_value:
+    - boolean: true
+    - integer: 1
+paragraph: >
+   Blank lines denote
+   paragraph breaks
+content: |-
+   Or we
+   can auto
+   convert line breaks
+   to save space
+```
+
+Hmmm, the light is flickering :smiley:
+
+# Concepts, Types, Syntax
+Let's take a look in some concepts of YAML
+
+<b>INDENTATION</b>
+<br>
+In Yaml, indentation does matter. It uses whitespace indentation to nest information. By whitespace, keep in mind tab is not allowed.
+
+<b>KEY/VALUE</b>
+<br>
+Like in JSON/JS, YAML also uses the key/value syntax and you can use in various ways:
+```php
+key: value
+key_one: value one
+key one: value # This works but it's weird
+'my key': somekey
+```
+
+<b>COMMENTS</b>
+<br>
+To write a comment in YAML, you just have to use # followed by your message content.
+```php
+# I'm a comment
+person: # I'm also a comment
+  age: 20
+```
+<b>LIST</b>
+<br>
+There're 2 ways to write lists:
+- The old way(JSON way): array of strings.
+```php
+people: ['Anne', 'John', 'Max']
+```
+
+- The new way(Hyphen syntax from YAML).
+
+```php
+  people:
+    - Anne
+    - John
+    - Max
+```
+<b>STRINGS</b><br>
+We have several ways to write strings in yaml:
+```php
+company: Google # Single words, no quotes
+full_name: John Foo Bar Doe # Full sentence, no quotes
+name: 'John' # Using single quotes
+surname: "Christian Meyer" # Using double quotes
+```
+While in JSON we would have only one way to use double quotes:
+```json
+{
+  "company": "Google",
+  "full_name": "John Foo Bar Doe",
+  "name": "John",
+  "surname": "Christian Meyer"
+}
+```
+
+<b>NUMBERS</b>
+<br>
+We have two types of number in YAML: Integer and Float
+```php
+year: 2019 # Integer
+nodeVersion: 10.8 # Float
+```
+
+<b>NODE ANCHORS</b>
+<br>
+I have no doubt if you are yawning with some information above, but please wake up because Node Anchors is an interesting feature.
+<br>
+An anchor is a mechanism to create a group of data (an object) that can be injected or extended from other objects.
+If you're a ruby on rails developer, I'm surely that you read that kind of feature in database.yml
+
+```php
+  default: &default
+    adapter: sqlite3
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    timeout: 5000
+
+  development:
+    <<: *default
+    database: db/development.sqlite3
+
+  test:
+    <<: *default
+    database: db/test.sqlite3
+
+  production:
+    <<: *default
+    database: db/production.sqlite3
+
+```
+
+But wait, take a deep eye, you may ask what the hell with:
+```php
+  default: &default
+    .
+    .
+    .
+  development:
+    <<: *default
+```
+Yeah, that it is, here is an anchor. If you don't use anchor, you have to repeat the same group configuration, equivalent:
+```php
+  development:
+    adapter: sqlite3
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    timeout: 5000
+    database: db/development.sqlite3
+
+  test:
+    adapter: sqlite3
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    timeout: 5000
+    database: db/test.sqlite3
+
+  production:
+    adapter: sqlite3
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    timeout: 5000
+    database: db/production.sqlite3
+```
+So much copy/paste here, instead of it, we create an anchor "*default*", and inject it to another place in the YAML file.
+```php
+  default: &default
+    adapter: sqlite3
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    timeout: 5000
+
+  development:
+    <<: *default
+    database: db/development.sqlite3
+```
+<b>JSON SYNTAX</b>
+<br>
+Because YAML is a superset of JSON, it means we can write YAML by JSON way::
+
+```json
+{
+  "details": {
+    "company": {
+      "name": "Google",
+      "year": 2019,
+      "active": true
+    },
+    "employees": [
+      "Anne",
+      "John",
+      "Max"
+    ]
+  }
+}
+```
+
+<b>SHELL/BASH ENVIRONMENT</b>
+<br>
+It's very common .yml files are used as config files for many things, but especially for CI/CD environment.
+In CI/CD environment, we usually use docker for setup/installed environment, let's check out a docker-compose.yml file:
+```php
+version: "3"
+variables:
+  REDIS_IMAGE: redis
+services:
+  node-app:
+    build: .
+    ports:
+      - '4001:8081'
+  redis-server:
+    image: $REDIS_IMAGE
+```
+Note that the syntax to use variables by $ isn't from YAML but shell/bash.
+What GitLab CI does is getting everything you'd defined in variables and creates shell variables.
+
+# Conclusion
+Every day we see a lot of "*yml*" files but not so sure about the benefit and how it works, I hope you found some useful information in this article.
+
+# References
+[Yaml official website](https://yaml.org/)
+<br>
+[Convert Json To Yaml](https://www.json2yaml.com/)
+<br>
+[Yaml Wikipedia](https://en.wikipedia.org/wiki/YAML)
+<br>
+[Yaml blog](https://dev.to/raulfdm/yaml-for-web-developers-559n)
